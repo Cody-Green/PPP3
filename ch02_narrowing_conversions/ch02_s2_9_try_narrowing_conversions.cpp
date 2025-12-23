@@ -21,7 +21,7 @@
 //																	d == 89.128 i == 89 c == Y char( Y )
 
 
-import std;
+#include ".\HEADERS\PPP.h"
 
 int main()
 {

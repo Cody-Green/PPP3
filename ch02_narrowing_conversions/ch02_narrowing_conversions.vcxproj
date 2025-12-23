@@ -24,6 +24,7 @@
     <ProjectGuid>{8c9c954e-621e-4f2e-90ce-96b4d3fa805a}</ProjectGuid>
     <RootNamespace>ch02narrowingconversions</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>ch02_s2_9_try_narrowing_conversions</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -125,12 +126,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="HEADERS\PPP.h" />
-    <ClInclude Include="HEADERS\PPP_support.h" />
+    <ClCompile Include="ch02_s2_9_try_narrowing_conversions.cpp" />
+    <ClCompile Include="HEADERS\PPP.ixx" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ch02_narrowing_conversions.cpp" />
-    <ClCompile Include="HEADERS\PPP.ixx" />
+    <ClInclude Include="HEADERS\PPP.h" />
+    <ClInclude Include="HEADERS\PPP_support.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

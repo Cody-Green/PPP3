@@ -26,7 +26,7 @@
     <ClCompile Include="HEADERS\PPP.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ch02_narrowing_conversions.cpp">
+    <ClCompile Include="ch02_s2_9_try_narrowing_conversions.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "ch01_Hello_world",
+    "Projects": [
+      {
+        "Path": "ch01_hello_world\\ch01_hello_world.vcxproj",
+        "Action": "Start"
+      }
+    ]
+  },
+  {
+    "Name": "ch02_even_or_odd",
+    "Projects": []
+  }
+]

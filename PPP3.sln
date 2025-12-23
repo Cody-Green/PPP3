@@ -15,7 +15,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ch02_Section_2_3_name_and_a
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ch02_Section_2_5_1_detect_repeated_words", "ch02_Section_2_5_1_detect_repeated_words\ch02_Section_2_5_1_detect_repeated_words.vcxproj", "{C022793C-22BC-4FD6-AD2B-723FBC909578}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ch02_s2_9_try_narrowing_conversions", "ch02_narrowing_conversions\ch02_narrowing_conversions.vcxproj", "{8C9C954E-621E-4F2E-90CE-96B4D3FA805A}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ch02_s2_9_try_narrowing_conversions", "ch02_s2_9_try_narrowing_conversions\ch02_s2_9_try_narrowing_conversions.vcxproj", "{8C9C954E-621E-4F2E-90CE-96B4D3FA805A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

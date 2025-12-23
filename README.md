@@ -4,7 +4,7 @@
 1. __(R-Click)__ the desired _project name_ in the _solution explorer_ => select _Set as Startup Project_ from the _menu_ => press __(F6)__ => if it successfully builds run the program in debug mode __(F5)__ or without debug __(Ctrl + F5)__
 1. 
 ## List of programs (with links to the source files)
-1. [HelloWorld.cpp](/ch01_hello_world/ch01_hello_world.cpp) :-> Outputs `Hello, World!` to the console
+1. [HelloWorld.cpp](/ch01_hello_world/HelloWorld.cpp) :-> Outputs `Hello, World!` to the console
 2. [ch02_Section_2_3_name_and_age_to_month.cpp](/ch02_Section_2_3_name_and_age_to_month/ch02_Section_2_3_name_and_age_to_month.cpp) :-> Outputs the age in months of a given input of a given name (first name), surname (last name) and an age
 3. [ch02_floating_point_arithmatic_operations.cpp](/ch02_floating_point_arithmatic_operations/ch02_floating_point_arithmatic_operations.cpp) :-> Outputs various results of floating point arithmatic using many of the available arithmatic operators.
 4. [ch02_integer_arithmatic_operations.cpp](/ch02_integer_arithmatic_operations/ch02_integer_arithmatic_operations.cpp) :-> Outputs various results of integer arithmatic using many of the available arithmatic operators, also trying various modulo results

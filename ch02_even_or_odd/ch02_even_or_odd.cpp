@@ -1,7 +1,4 @@
-// /Chapter_02/src/ch02_even_or_odd.cpp
-// 
-// **IMPORTANT** Uncomment file to use -> (ctrl + a) -> (ctrl + k) (ctrl + u)
-// **IMPORTANT** Re-comment after use -> (ctrl + a) -> (ctrl + k) (ctrl + c)
+// /PPP3/ch02_even_or_odd/ch02_even_or_odd.cpp
 // 
 // Purpose: Outputs whether or not an integer input is even or odd.
 // Preconditions:

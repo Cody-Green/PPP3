@@ -1,7 +1,4 @@
-// /Chapter_02/src/ch02_integer_arithmatic_operations.cpp
-// 
-// **IMPORTANT** Uncomment file to use -> (ctrl + a) -> (ctrl + k) (ctrl + u)
-// **IMPORTANT** Re-comment after use -> (ctrl + a) -> (ctrl + k) (ctrl + c)
+// /PPP3/ch02_integer_arithmatic_operations/ch02_integer_arithmatic_operations.cpp
 // 
 // Purpose: Output various results of integer arithmatic using many of the available arithmatic operators, also trying various modulo results.
 // Preconditions:

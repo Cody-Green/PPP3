@@ -21,9 +21,6 @@
     <ClInclude Include="HEADERS\PPP_support.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ch02_Section_2_3_name_and_age_to_month.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="HEADERS\PPP.ixx">

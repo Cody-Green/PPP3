@@ -9,7 +9,8 @@
 
 // PRECONDITIONS:
 // - Continuous User input of valid double type compatible numbers.
-// - User terminates program by executing an EOF (Windows: [ctrl + z] => [ENTER] (CRLF)) 
+// - User terminates program by executing an EOF (Windows: [ctrl + z] => [ENTER] (CRLF))
+// - On non-numeric input, the program reports an error and terminates.
 
 // TESTS:
 // - INPUT: 69.420 42.69 EOF
@@ -17,18 +18,35 @@
 // - INPUT: 420 6900 EOF
 //			OUTCOME: The value of c is machine dependant and not portable (loss of information, data mutation)
 
-#include ".\HEADERS\PPP.h"
+#include "PPP.h"
 
 int main()
 {
-	double d = 0;
-	while (std::cin >> d)
+
+	double tt_double{ 0 };
+	
+	std::cout << "Enter a series of [SPACE] seperated numbers followed by [ENTER]\n"
+			  << "Terminate the program with an EOF input (Windows: [ctrl + z] = >[ENTER]\n"
+			  << "=>: ";
+
+	while (std::cin >> tt_double)
 	{
-		int i = d;
-		char c = i;
-		std::cout << "d == " << d
-			<< " i == " << i
-			<< " c == " << c
-			<< " char( " << c << " )\n";
+		const int tt_int = static_cast<int>(tt_double);
+		const char tt_char = static_cast<char>(tt_int);
+		const int tt_char_code = static_cast<unsigned char>(tt_char);
+
+		std::cout << "\n- test_type_double: " << tt_double
+			<< "\n- test_type_int: " << tt_int
+			<< "\n- test_type_character_code: " << tt_char_code
+			<< "\n- test_type_char( " << tt_char << " )\n";
 	}
+
+	if (std::cin.eof())
+	{
+		return 69; // intended termination
+	}
+
+	// User entered a non-numeric input - terminate with 420
+	std::cerr << "INPUT ERROR: Expected numeric value or EOF\n";
+	return 420;
 }

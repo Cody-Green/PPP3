@@ -2,7 +2,7 @@
 
 ## How to build and run the programs
 1. __(R-Click)__ the desired _project name_ in the _solution explorer_ => select _Set as Startup Project_ from the _menu_ => press __(F6)__ => if it successfully builds run the program in debug mode __(F5)__ or without debug __(Ctrl + F5)__
-1. 
+ 
 ## List of programs (with links to the source files)
 1. [HelloWorld.cpp](/ch01_hello_world/HelloWorld.cpp) :-> Outputs `Hello, World!` to the console
 2. [ch02_Section_2_3_name_and_age_to_month.cpp](/ch02_Section_2_3_name_and_age_to_month/ch02_Section_2_3_name_and_age_to_month.cpp) :-> Outputs the age in months of a given input of a given name (first name), surname (last name) and an age

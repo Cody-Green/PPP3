@@ -10,6 +10,7 @@
 4. [ch02_integer_arithmatic_operations.cpp](/ch02_integer_arithmatic_operations/ch02_integer_arithmatic_operations.cpp) :-> Outputs various results of integer arithmatic using many of the available arithmatic operators, also trying various modulo results
 5. [ch02_even_or_odd.cpp](/ch02_even_or_odd/ch02_even_or_odd.cpp) :-> Outputs whether or not an integer input is even or odd.
 6. [ch02_Section_2_5_1_detect_repeated_words.cpp](/ch02_Section_2_5_1_detect_repeated_words/ch02_Section_2_5_1_detect_repeated_words.cpp) :-> Outputs whether or not an integer input is even or odd.
+7. [ch02_narrowing_conversions.cpp](/ch02_narrowing_conversions/ch02_narrowing_conversions.cpp) :-> Outputs whether or not an integer input is even or odd.
 
 # Chapter 1:
 

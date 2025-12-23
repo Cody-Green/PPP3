@@ -1,6 +1,6 @@
 ﻿// /PPP3/ch02_narrowing_conversions/ch02_narrowing_conversions.cpp
 // 
-// Purpose: Outputs whether or not an integer input is even or odd.
+// Purpose: Continuously retrieves valid double type input from the character input stream, when the user inputs a new line the program displays the double value assigned to a double, int, char type variable respectively through the character output stream.
 // Preconditions: input d is expected to be any valid positive or negative double type value.
 // Tests:
 //			- Input:2 3 -> \n -> (ctrl + z) -> \n" -> Output:

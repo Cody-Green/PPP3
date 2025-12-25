@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ch02_e02_mi_to_km.cpp">
+    <ClCompile Include="ch02_e2_mi_to_km.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="HEADERS\PPP.ixx">

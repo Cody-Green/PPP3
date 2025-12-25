@@ -2,7 +2,7 @@
 
 // PRECONDITIONS: Input valid integer numbers for val1 and val2.
 // TESTS:
-// - Input: 3 7 -> identifies smaller/larger, prints sum/diff/product, ratio as integer quotien 3/7
+// - Input: 3 7 -> identifies smaller/larger, prints sum/diff/product, ratio as integer quotient 3/7
 // - Input: 5 0 -> prints sum/diff/product, reports division by zero
 
 #include "PPP.h"

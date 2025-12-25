@@ -2,7 +2,7 @@
 
 // PRECONDITIONS: Input valid integer numbers for val1 and val2.
 // TESTS:
-// - Input: 3 7 -> identifies smaller/larger, prints sum/diff/product, ratio as integer quotient 3/7
+// - Input: 3 7 -> identifies smaller/larger, prints sum/diff/product, ratio as integer quotient 3/7 == 0 (integer quotient)
 // - Input: 5 0 -> prints sum/diff/product, reports division by zero
 
 #include "PPP.h"
@@ -12,25 +12,13 @@ int main()
 	int val1{ 0 };
 	int val2{ 0 };
 
-	std::cout << "Please enter the first integer value:\n"
+	std::cout << "Please enter two integer values to be evaluated:\n"
 		<< ":=> ";
 
-	if (!(std::cin >> val1))
+	if (!(std::cin >> val1 >> val2))
 	{
 		std::cerr << "\n\nError: Unable to process input!\nTerminating program!\n\n";
 
-		//terminate with error code.
-		return 1;
-	}
-
-	std::cout << "Please enter the second integer value:\n"
-		<< ":=> ";
-
-	if (!(std::cin >> val2))
-	{
-		std::cerr << "\n\nError: Unable to process input!\nTerminating program!\n\n";
-		
-		//terminate with error code.
 		return 1;
 	}
 
@@ -66,6 +54,5 @@ int main()
 			<< "( " << val1 << " / " << val2 << " ) = " << (val1 / val2) << '\n';
 	}
 
-	// expected termination.
 	return 0;
 }

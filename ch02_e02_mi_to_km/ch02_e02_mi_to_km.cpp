@@ -7,8 +7,7 @@
 // - mi => km = mi * 1.609.
 
 // PRECONDITIONS:
-// - Input of valid double type numeric values or EOF.
-// - User terminates program by executing an EOF (Windows: Ctrl+Z then Enter)
+// - Input of valid double type numeric values
 // - On non-numeric input, the program reports an error and terminates.
 
 // TESTS:
@@ -22,7 +21,7 @@
 int main()
 {
 	double mi{ 0 };
-	double factor{ 1.609 };
+	const double factor{ 1.609 };
 
 	std::cout << "This program will convert Miles to Kilometers\n"
 			<< "Please enter a distance in Miles:\n"
@@ -30,9 +29,11 @@ int main()
 
 	if (!(std::cin >> mi))
 	{
-		std::cout << "Error: Unable to process input!";
+		std::cerr << "Error: Unable to process input!";
 		return 1;
 	}
 
 	std::cout << mi << " mile = " << (mi * factor) << " kilometers\n\n";
+	
+	return 0;
 }

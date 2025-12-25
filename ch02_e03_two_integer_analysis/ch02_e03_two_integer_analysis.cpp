@@ -17,23 +17,19 @@ int main()
 
 	if (!(std::cin >> val1))
 	{
-		std::system("cls");
 		std::cout << "\n\nError: Unable to process input!\nTerminating program!\n\n";
 		return 1;
 	}
 
-	std::system("cls");
 	std::cout << "Please enter the second integer value:\n"
 		<< ":=> ";
 
 	if (!(std::cin >> val2))
 	{
-		std::system("cls");
 		std::cout << "\n\nError: Unable to process input!\nTerminating program!\n\n";
 		return 1;
 	}
 
-	std::system("cls");
 	switch (val1 == val2)
 	{
 	case 1:
@@ -54,9 +50,13 @@ int main()
 		<< "The product of " << val1 << " and " << val2 << " is: "
 		<< "( " << val1 << " * " << val2 << " ) = " << (val1 * val2) << '\n';
 
-	//Ternary to avoid divide by zero
-	((val2 == 0)
-		? std::cout << "unable to divide by zero, illigal operation!\n"
-		: std::cout << "The ratio of " << val1 << " and " << val2 << " is: "
-		<< "( " << val1 << " / " << val2 << " ) = " << (std::to_string(val1 / val2))) << '\n';
+	if (val2 == 0)
+	{
+		std::cout << "unable to divide by zero, illigal operation!\n\n";
+	}
+	else
+	{
+		std::cout << "The ratio of " << val1 << " and " << val2 << " is: "
+			<< "( " << val1 << " / " << val2 << " ) = " << (val1 / val2) << '\n';
+	}
 }

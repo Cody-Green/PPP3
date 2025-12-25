@@ -12,7 +12,7 @@
 //			- Input:"-43\n" -> Output: -43 is odd!
 //			- Input:"69420\n" -> Output: 69420 is even!
 
-#include ".\HEADERS\PPP.h"
+#include "PPP.h"
 
 
 int main()

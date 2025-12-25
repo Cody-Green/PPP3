@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{588777a4-7d35-4358-aaac-82963604ff74}</ProjectGuid>
-    <RootNamespace>ch01helloworld</RootNamespace>
+    <ProjectGuid>{3c1f06ac-6935-401f-97bc-bafc0f3c1dc8}</ProjectGuid>
+    <RootNamespace>ch02e02mitokm</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -71,12 +71,10 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>G:\PROGRAMMING\CPP\PPP3\HEADERS;$(IncludePath)</IncludePath>
-    <ExternalIncludePath>G:\PROGRAMMING\CPP\PPP3\HEADERS;$(ExternalIncludePath)</ExternalIncludePath>
+    <IncludePath>$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>G:\PROGRAMMING\CPP\PPP3\HEADERS;$(IncludePath)</IncludePath>
-    <ExternalIncludePath>G:\PROGRAMMING\CPP\PPP3\HEADERS;$(ExternalIncludePath)</ExternalIncludePath>
+    <IncludePath>$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -111,7 +109,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpplatest</LanguageStandard>
-      <AdditionalIncludeDirectories>G:\PROGRAMMING\CPP\PPP3\ch01_hello_world\HEADERS;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>G:\PROGRAMMING\CPP\PPP3\ch02_e02_mi_to_km\HEADERS;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalUsingDirectories>%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
     </ClCompile>
     <Link>
@@ -128,7 +126,7 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpplatest</LanguageStandard>
-      <AdditionalIncludeDirectories>G:\PROGRAMMING\CPP\PPP3\ch01_hello_world\HEADERS;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>G:\PROGRAMMING\CPP\PPP3\ch02_e02_mi_to_km\HEADERS;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalUsingDirectories>%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
     </ClCompile>
     <Link>
@@ -137,11 +135,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ch02_e02_mi_to_km.cpp" />
     <ClCompile Include="HEADERS\PPP.ixx" />
-    <ClCompile Include="HelloWorld.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="HEADERS\PPP.h" />

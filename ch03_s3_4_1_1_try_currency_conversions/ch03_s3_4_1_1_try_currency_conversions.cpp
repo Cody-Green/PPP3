@@ -3,13 +3,13 @@
 // PURPOSE: 
 // - Demonstrate the use of branching logic using if statements.
 // - Prompt the user to select one of a few selections and make
-//	programatic decisions based on the selection.
-// - Takes a user prompt of a currency type and converts selected currency
+//	programmatic decisions based on the selection. 
+// - Takes a user prompt of a currency type and converts the selected currency 
 //	to Canadian dollar.
 
 // PRECONDITIONS:
 // - Input valid char type for first selection =>
-//	Input valid double type for second selection.
+//	Input a valid double type for second selection. 
 // - On invalid input, the program reports an error and terminates.
 
 // TESTS:
@@ -18,7 +18,7 @@
 // - INPUT: 420.69 [Enter] k [Enter]
 //			OUTCOME: 420.69 Kroner => Canadian Dollars: $58.8966
 // - INPUT: 69.42 [Enter] p [Enter]
-//			OUTCOME: 69.42 Brittish Pounds => Canadian Dollars is: $128.427
+//			OUTCOME: 69.42 British Pounds => Canadian Dollars is: $128.427 
 
 #include "PPP.h"
 

@@ -8,8 +8,8 @@
 //	to Canadian dollar.
 
 // PRECONDITIONS:
-// - Input valid char type for first selection =>
-//	Input a valid double type for second selection. 
+// - Input a valid double type for second selection =>
+//	Input valid char type for first selection. 
 // - On invalid input, the program reports an error and terminates.
 
 // TESTS:
@@ -27,7 +27,7 @@ int main()
 	constexpr double y_factor = 0.0088;
 	constexpr double k_factor = 0.14;
 	constexpr double p_factor = 1.85;
-	char currency_type = ' ';
+	char currency_type = 0;
 	double currency_value{ 0 };
 
 	std::cout << "\nEnter the value to convert: ";
@@ -58,14 +58,12 @@ int main()
 	}
 	else if (currency_type == 'p')
 	{
-		std::cout << currency_value << " Brittish Pounds => Canadian Dollars is: $" << currency_value * p_factor << '\n';
+		std::cout << currency_value << " British Pounds => Canadian Dollars is: $" << currency_value * p_factor << '\n';
 		return 0;
 	}
 	else
 	{
-		std::cerr << "Error: Unknown currency!";
+		std::cerr << "Error: Unknown currency!\n\n";
 		return 1;
 	}
-
-	return 1;
 }

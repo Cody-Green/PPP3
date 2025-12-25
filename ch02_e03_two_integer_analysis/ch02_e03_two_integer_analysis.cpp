@@ -30,23 +30,25 @@ int main()
 		return 1;
 	}
 
-	switch (val1 == val2)
+	if (val1 == val2)
 	{
-	case 1:
 		std::cout << val1 << " and " << val2 << " are equal!\n";
-		break;
-	case 0:
-		std::cout << val1 << " is " << (val1 > val2 ? "the larger of the two!\n" : "the smaller of the two!\n");
-		std::cout << val2 << " is " << (val2 > val1 ? "the larger of the two!\n" : "the smaller of the two!\n");
-		break;
+	}
+	else if (val1 < val2)
+	{
+		std::cout << val1 << " is the smaller of the two!\n";
+		std::cout << val2 << " is the larger of the two!\n";
+	}
+	else
+	{
+		std::cout << val1 << " is the larger of the two!\n";
+		std::cout << val2 << " is the smaller of the two!\n";
 	}
 
 	std::cout << "The sum of " << val1 << " and " << val2 << " is: "
 		<< "( " << val1 << " + " << val2 << " ) = " << (val1 + val2) << '\n'
-
 		<< "The difference between " << val1 << " and " << val2 << " is: "
 		<< "( " << val1 << " - " << val2 << " ) = " << (val1 - val2) << '\n'
-
 		<< "The product of " << val1 << " and " << val2 << " is: "
 		<< "( " << val1 << " * " << val2 << " ) = " << (val1 * val2) << '\n';
 

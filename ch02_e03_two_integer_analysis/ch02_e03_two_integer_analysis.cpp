@@ -52,7 +52,7 @@ int main()
 
 	if (val2 == 0)
 	{
-		std::cout << "unable to divide by zero, illigal operation!\n\n";
+		std::cout << "unable to divide by zero, illegal operation!\n\n";
 	}
 	else
 	{

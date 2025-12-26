@@ -60,7 +60,7 @@ int main()
 	}
 	else if (currency_type == 'p')
 	{
-		std::cout << currency_value << " British Pounds => Canadian Dollars is: $" << currency_value * p_factor << '\n';
+		std::cout << currency_value << " British Pounds => Canadian Dollars: $" << currency_value * p_factor << '\n';
 		return 0;
 	}
 	else

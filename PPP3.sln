@@ -15,6 +15,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ch03_s3_4_1_1_try_currency_
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ch02_e2_mi_to_km", "ch02_e2_mi_to_km\ch02_e2_mi_to_km.vcxproj", "{3C1F06AC-6935-401F-97BC-BAFC0F3C1DC8}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ch03_s3_3_expressions_types", "ch03_s3_3_expressions_types\ch03_s3_3_expressions_types.vcxproj", "{38C735E3-0BC7-4D41-83D6-45EE5927C194}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -71,6 +73,14 @@ Global
 		{3C1F06AC-6935-401F-97BC-BAFC0F3C1DC8}.Release|x64.Build.0 = Release|x64
 		{3C1F06AC-6935-401F-97BC-BAFC0F3C1DC8}.Release|x86.ActiveCfg = Release|Win32
 		{3C1F06AC-6935-401F-97BC-BAFC0F3C1DC8}.Release|x86.Build.0 = Release|Win32
+		{38C735E3-0BC7-4D41-83D6-45EE5927C194}.Debug|x64.ActiveCfg = Debug|x64
+		{38C735E3-0BC7-4D41-83D6-45EE5927C194}.Debug|x64.Build.0 = Debug|x64
+		{38C735E3-0BC7-4D41-83D6-45EE5927C194}.Debug|x86.ActiveCfg = Debug|Win32
+		{38C735E3-0BC7-4D41-83D6-45EE5927C194}.Debug|x86.Build.0 = Debug|Win32
+		{38C735E3-0BC7-4D41-83D6-45EE5927C194}.Release|x64.ActiveCfg = Release|x64
+		{38C735E3-0BC7-4D41-83D6-45EE5927C194}.Release|x64.Build.0 = Release|x64
+		{38C735E3-0BC7-4D41-83D6-45EE5927C194}.Release|x86.ActiveCfg = Release|Win32
+		{38C735E3-0BC7-4D41-83D6-45EE5927C194}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

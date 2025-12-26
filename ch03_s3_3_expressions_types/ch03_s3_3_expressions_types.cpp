@@ -38,15 +38,18 @@ int main()
 		return 1;
 	}
 
-	if (b == 0)
+	std::cout << "- " << a << " + " << b << " + " << c << " = " << a + b + c << '\n';
+	std::cout << "- " << a << " * " << b << " * " << c << " = " << a * b * c << '\n';
+
+	if (b == 0.0)
 	{
-		std::cerr << "\n\nError: Integer division by zero!";
+		std::cerr << "\n\nError: Floating-point division by zero!\n\n";
 
 		return 1;
 	}
-	else if (c == 0.0)
+	else if (c == 0)
 	{
-		std::cerr << "\n\nError: Floating-point division by zero!";
+		std::cerr << "\n\nError: Integer division by zero!\n\n";
 
 		return 1;
 	}

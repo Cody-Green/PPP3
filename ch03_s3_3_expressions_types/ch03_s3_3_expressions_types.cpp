@@ -14,21 +14,21 @@
 //				-6 + 7.6 + 7 = 20.6
 //				- 6 * 7.6 * 7 = 319.2
 //				- 6 / 7 = 0 (integer division - strips fractional part - possible loss of precision)
-//				- 6 / 7.6 = 0.789474 (floating - point division - maintains fractional part - no loss of precision)
+//				- 6 / 7.6 = 0.789474 (floating-point division - maintains fractional part)
 // - Input: 9 8.9 8 [Enter] (int double int)
 //		Output:
 //				-9 + 8.9 + 8 = 25.9
 //				- 9 * 8.9 * 8 = 640.8
 //				- 9 / 8 = 1 (integer division - strips fractional part - possible loss of precision)
-//				- 9 / 8.9 = 1.01124 (floating - point division - maintains fractional part - no loss of precision)
+//				- 9 / 8.9 = 1.01124 (floating-point division - maintains fractional part)
 
 #include "PPP.h"
 
 int main()
 {
 	int	 a{ 0 };
-	int	 c{ 0 };
 	double b{ 0 };
+	int	 c{ 0 };
 	
 	std::cout << "Input: int, double, int: ";
 	if (!(std::cin >> a >> b >> c))
@@ -38,22 +38,25 @@ int main()
 		return 1;
 	}
 
-	std::cout << "- " << a << " + " << b << " + " << c << " = " << a + b + c << '\n';
-	std::cout << "- " << a << " * " << b << " * " << c << " = " << a * b * c << '\n';
-	
-	if (b && c)
+	if (b == 0)
 	{
-		std::cout << "- " << a << " / " << c << " = " << a / c << " (integer division "
-			<< " - strips fractional part"
-			<< " - possible loss of precision)\n"
-			<< "- " << a << " / " << b << " = " << a / b << " (floating-point division"
-			<< " - maintains fractional part"
-			<< " - no loss of precision)\n\n";
-	}
-	else
-	{
-		std::cerr << "\n\nError: Division by zero!";
+		std::cerr << "\n\nError: Integer division by zero!";
 
 		return 1;
 	}
+	else if (c == 0.0)
+	{
+		std::cerr << "\n\nError: Floating-point division by zero!";
+
+		return 1;
+	}
+	else
+	{
+		std::cout << "- " << a << " / " << c << " = " << a / c << " (integer division "
+			<< " - strips fractional part)\n"
+			<< "- " << a << " / " << b << " = " << a / b << " (floating-point division"
+			<< " - maintains fractional part)\n\n";
+	}
+
+	return 0;
 }

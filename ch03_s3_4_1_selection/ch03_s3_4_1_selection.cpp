@@ -5,7 +5,7 @@
 
 //PRECONDITIONS:
 // - Inputs a valid double value followed by one of several valid operator characters
-//	followed by a valid double character
+//	followed by a valid double value
 // - Invalid inputs display an error and terminate the program.
 
 //TESTS: 

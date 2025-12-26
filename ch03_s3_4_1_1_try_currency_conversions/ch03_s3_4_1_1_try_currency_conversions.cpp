@@ -1,5 +1,7 @@
 // /PPP3/ch03_s3_4_1_1_try_currency_conversions/ch03_s3_4_1_1_try_currency_conversions.cpp
 
+// NOTE: Conversion factors are fixed pedagogical constants (not guaranteed current exchange rates).
+
 // PURPOSE: 
 // - Demonstrate the use of branching logic using if statements.
 // - Prompt the user to select one of a few selections and make
@@ -8,8 +10,8 @@
 //	to Canadian dollar.
 
 // PRECONDITIONS:
-// - Input a valid double type for second selection =>
-//	Input valid char type for first selection. 
+// - Input a valid double type for input value =>
+//	Input valid char type for currenct selection. 
 // - On invalid input, the program reports an error and terminates.
 
 // TESTS:

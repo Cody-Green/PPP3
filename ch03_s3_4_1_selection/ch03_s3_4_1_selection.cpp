@@ -63,6 +63,8 @@ int main()
 	else
 	{
 		std::cerr << "Error: Unknown operator\n\n";
+
+		return 1;
 	}
 
 	return 0;

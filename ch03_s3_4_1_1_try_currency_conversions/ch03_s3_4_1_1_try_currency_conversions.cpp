@@ -11,7 +11,7 @@
 
 // PRECONDITIONS:
 // - Input a valid double type for input value =>
-//	Input valid char type for currenct selection. 
+//	Input valid char type for current selection. 
 // - On invalid input, the program reports an error and terminates.
 
 // TESTS:

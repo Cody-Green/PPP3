@@ -51,6 +51,8 @@ int main()
 		if (second_value == 0)
 		{
 			std::cerr << "Error: Illegal divide by zero operation!\n\n";
+
+			return 1;
 		}
 		else
 		{

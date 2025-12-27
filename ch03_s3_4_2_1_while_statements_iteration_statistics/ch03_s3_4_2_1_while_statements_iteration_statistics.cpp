@@ -4,8 +4,8 @@
 // - Demonstrate iteration using a while statement.
 
 //PRECONDITIONS:
-// - Input valid double type values [Enter] [EOF].
-// - Any non valid double type terminates the program.
+// - Input a sequence of (space\endline separated) valid double type values followed by EOF.
+// - Any non valid double type prints an error and terminates the program.
 
 //TESTS:
 // - Input: 2 4 7 1 [EOF]
@@ -59,7 +59,16 @@ int main()
 
 	if (input_count == 0)
 	{
-		std::cerr << "Error: No input was given!\n\n";
+		std::cerr << "Error: No valid input was recieved!\n\n";
+
+		return 1;
+	}
+
+	if (!(std::cin.eof()))
+	{
+		std::cerr << "Error: Invalid input!\n\n";
+
+		return 1;
 	}
 
 	std::cout <<

@@ -1,7 +1,7 @@
 //PPP3/ch03_4_1_selection_classification/ch03_s3_4_1_selection_classification.cpp
 
 //PURPOSE: 
-// - Demonstrate selection based on user input
+// - Demonstrate selection based on user input (zero, positive, negative)
 
 //PRECONDITIONS: 
 // - Input is a valid double type value.
@@ -37,15 +37,9 @@ int main()
 	{
 		std::cout << user_input << " is positive.\n\n";
 	}
-	else if (user_input < 0)
+	else
 	{
 		std::cout << user_input << " is negative.\n\n";
-	}
-	else 
-	{
-		std::cerr << "Error: Unable to parse " << user_input << "\n\n";
-
-		return 1;
 	}
 
 	return 0;

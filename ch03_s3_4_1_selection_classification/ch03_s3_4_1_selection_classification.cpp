@@ -13,7 +13,7 @@
 // - Input: -420.69 [Enter]
 //		Output: -420.69 is negative.
 // - Input: 0 [Enter]
-//		Output:0 is zero.
+//		Output: 0 is zero.
 
 #include "PPP.h"
 

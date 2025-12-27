@@ -10,6 +10,25 @@
 //TESTS:
 // - Input: 2 4 7 1 [Enter] [EOF]
 //		Output: 
+//				Number of values read: 1
+//				Sum: 2
+//				Smallest : 2
+//				Largest : 2
+//				
+//				Number of values read : 2
+//				Sum : 6
+//				Smallest : 2
+//				Largest : 4
+//				
+//				Number of values read : 3
+//				Sum : 13
+//				Smallest : 2
+//				Largest : 7
+//				
+//				Number of values read : 4
+//				Sum : 14
+//				Smallest : 1
+//				Largest : 7
 
 #include "PPP.h"
 

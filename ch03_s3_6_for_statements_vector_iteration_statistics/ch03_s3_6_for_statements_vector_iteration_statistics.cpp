@@ -24,7 +24,6 @@
 
 #include <iostream>
 #include <vector>
-#include <algorithm>
 
 
 int main()
@@ -40,24 +39,34 @@ int main()
 
 	if (user_inputs.size() == 0)
 	{
-		std::cerr << "Error: No valid input was recieved!\n\n";
+		std::cerr << "Error: No valid input was received!\n\n";
 
 		return 1;
 	}
 
 	double sum{ 0 };
+	double smallest_value = user_inputs[0];
+	double largest_value = user_inputs[0];
+
 	for (double value : user_inputs)
 	{
 		sum += value;
-	}
+		if (value < smallest_value)
+		{
+			smallest_value = value;
+		}
+		if (value > largest_value)
+		{
+			largest_value = value;
+		}
 
-	std::ranges::sort(user_inputs);
+	}
 
 	std::cout <<
 		"\nNumber of values read: " << user_inputs.size() << '\n'
 		<< "Sum: " << sum << '\n'
-		<< "Smallest:  " << user_inputs[0] << '\n'
-		<< "Largest: " << user_inputs[user_inputs.size() - 1] << "\n\n";
+		<< "Smallest:  " << smallest_value << '\n'
+		<< "Largest: " << largest_value << "\n\n";
 
 	return 0;
 }

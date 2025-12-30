@@ -73,7 +73,7 @@ int main()
 		}
 
 		ship.speed = std::sqrt(ship.vx * ship.vx + ship.vy * ship.vy);
-		if (ship.speed >= ship.max_speed && ship.speed > 0)
+		if (ship.speed > ship.max_speed && ship.speed > 0)
 		{
 			double scale = ship.max_speed / ship.speed;
 			ship.vx *= scale;
@@ -95,10 +95,12 @@ int main()
 		std::this_thread::sleep_for(std::chrono::milliseconds(16));
 		ticks++;
 
-		if (ticks == 20)
+		// Only display output
+		if (ticks % 20 == 0)
 		{
+			system("cls");
 			std::cout << "Position: x(" << ship.x << "), y(" << ship.y << ")\n"
-				<< "Velocity: vx(" << ship.vx << "), vy("<< ship.vy << "\n"
+				<< "Velocity: vx(" << ship.vx << "), vy("<< ship.vy << ")\n"
 				<< "Angle: " << ship.angle << '\n'
 				<< "Speed: " << ship.speed << "\n\n";
 		}

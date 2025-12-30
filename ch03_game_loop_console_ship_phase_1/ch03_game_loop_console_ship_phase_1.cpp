@@ -72,14 +72,6 @@ int main()
 			}
 		}
 
-		ship.speed = std::sqrt(ship.vx * ship.vx + ship.vy * ship.vy);
-		if (ship.speed > ship.max_speed && ship.speed > 0)
-		{
-			double scale = ship.max_speed / ship.speed;
-			ship.vx *= scale;
-			ship.vy *= scale;
-		}
-
 		ship.vx *= (1.0 - ship.intertial_drag);
 		ship.vy *= (1.0 - ship.intertial_drag);
 
@@ -91,6 +83,20 @@ int main()
 
 		ship.x += ship.vx;
 		ship.y += ship.vy;
+
+		ship.speed = std::sqrt(ship.vx * ship.vx + ship.vy * ship.vy);
+		if (ship.speed > ship.max_speed && ship.speed > 0)
+		{
+			double scale = ship.max_speed / ship.speed;
+			ship.vx *= scale;
+			ship.vy *= scale;
+		}
+
+		if (ship.x < 0 || ship.x > gs.canvas_width)
+			ship.x = 0;
+
+		if (ship.y < 0 || ship.y > gs.canvas_height)
+			ship.y = 0;
 
 		std::this_thread::sleep_for(std::chrono::milliseconds(16));
 		ticks++;

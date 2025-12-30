@@ -80,10 +80,7 @@ int main()
 
 		while (ship.angle >= two_pi)
 			ship.angle -= two_pi;
-
-		ship.x += ship.vx;
-		ship.y += ship.vy;
-
+		
 		ship.speed = std::sqrt(ship.vx * ship.vx + ship.vy * ship.vy);
 		if (ship.speed > ship.max_speed && ship.speed > 0)
 		{
@@ -92,17 +89,26 @@ int main()
 			ship.vy *= scale;
 		}
 
-		if (ship.x < 0 || ship.x > gs.canvas_width)
-			ship.x = 0;
+		ship.x += ship.vx;
+		ship.y += ship.vy;
 
-		if (ship.y < 0 || ship.y > gs.canvas_height)
-			ship.y = 0;
+		while (ship.x < 0)
+			ship.x += gs.canvas_width;
+
+		while (ship.x >= gs.canvas_width)
+			ship.x -= gs.canvas_width;
+
+		while (ship.y < 0)
+			ship.y += gs.canvas_height;
+
+		while (ship.y >= gs.canvas_height)
+			ship.y -= gs.canvas_height;
 
 		std::this_thread::sleep_for(std::chrono::milliseconds(16));
 		ticks++;
 
 		// Only display output
-		if (ticks % 20 == 0)
+		if (ticks % 5 == 0)
 		{
 			system("cls");
 			std::cout << "Position: x(" << ship.x << "), y(" << ship.y << ")\n"

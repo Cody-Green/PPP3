@@ -5,7 +5,7 @@
 
 //PRECONDITIONS:
 // - Input a sequence of (space\endline separated) valid double type values followed by
-//	non-numeric input or EOF.
+//	non-numeric token or EOF; program stops reading input at non-numeric or EOF inputs.
 // - Any non valid double type terminates the program.
 
 //TESTS:
@@ -37,7 +37,7 @@ int main()
 		user_inputs.push_back(user_input);
 	}
 
-	if (user_inputs.size() == 0)
+	if (user_inputs.empty())
 	{
 		std::cerr << "Error: No valid input was received!\n\n";
 

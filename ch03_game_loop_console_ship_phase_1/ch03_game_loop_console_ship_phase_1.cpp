@@ -1,5 +1,10 @@
 //PPP3/ch03_game_loop_console_ship_phase_1/ch03_game_loop_console_ship_phase_1.cpp
 
+// - Ship wraps around canvas borders 0 <= x < canvas_width
+//                                 0 <= y < canvas_height
+// - Ship angle is normalized to 2.0 * pi
+// - Ship speed is clamped to max_speed => speed <= max_speed
+
 #include <iostream>
 #include <cmath>
 #include <thread>
@@ -7,7 +12,8 @@
 #include <conio.h>
 #include <numbers>
 
-const double two_pi = 2.0 * std::numbers::pi;
+const bool SYSTEM_CLS = false;
+const double TWO_PI = 2.0 * std::numbers::pi;
 
 struct ShipState
 {
@@ -33,6 +39,8 @@ struct GameState
 
 int main()
 {
+	
+
 	GameState gs;
 	ShipState ship{ .x = (gs.canvas_width * 0.5) };
 	size_t ticks{ 0 };
@@ -76,10 +84,10 @@ int main()
 		ship.vy *= (1.0 - ship.intertial_drag);
 
 		while (ship.angle < 0)
-			ship.angle += two_pi;
+			ship.angle += TWO_PI;
 
-		while (ship.angle >= two_pi)
-			ship.angle -= two_pi;
+		while (ship.angle >= TWO_PI)
+			ship.angle -= TWO_PI;
 		
 		ship.speed = std::sqrt(ship.vx * ship.vx + ship.vy * ship.vy);
 		if (ship.speed > ship.max_speed && ship.speed > 0)
@@ -108,13 +116,12 @@ int main()
 		ticks++;
 
 		// Only display output
-		if (ticks % 5 == 0)
+		if (ticks % 20 == 0)
 		{
-			system("cls");
-			std::cout << "Position: x(" << ship.x << "), y(" << ship.y << ")\n"
-				<< "Velocity: vx(" << ship.vx << "), vy("<< ship.vy << ")\n"
-				<< "Angle: " << ship.angle << '\n'
-				<< "Speed: " << ship.speed << "\n\n";
+			double d = ship.angle * 180 / std::numbers::pi;
+			if (SYSTEM_CLS) system("cls");
+			std::cout << "x: " << ship.x << ", y: " << ship.y << ", vx: " 
+				<< ship.vx << ", vy: " << ship.vy << ", angle: " << d << "\n\n";
 		}
 	}
 

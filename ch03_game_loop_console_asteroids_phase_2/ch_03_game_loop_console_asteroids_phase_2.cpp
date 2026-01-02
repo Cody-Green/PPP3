@@ -150,7 +150,7 @@ int main()
 		while (asteroid.position.y >= gs.canvas_height - asteroid.radius)
 			asteroid.position.y -= asteroid.radius - (asteroid.radius - gs.canvas_width);
 
-		if (pow(ship.position.x - asteroid.position.x, 2.0) + pow(ship.position.y - asteroid.position.y, 2.0) <=  pow(ship.radius + asteroid.radius, 2.0))
+		if (((ship.position.x - asteroid.position.x) * (ship.position.x - asteroid.position.x)) + ((ship.position.y - asteroid.position.y) * (ship.position.y - asteroid.position.y)) <= ((ship.radius + asteroid.radius) * (ship.radius + asteroid.radius)))
 		{
 			std::cout << "HIT!";
 			return 1;

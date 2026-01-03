@@ -61,7 +61,7 @@ int main()
 
 	asteroid.position = { gs.canvas_width * 0.5, gs.canvas_height - asteroid.radius * 2};
 	asteroid.velocity.y = -0.2;
-	ship.position.x = (gs.canvas_width * 0.5);
+	ship.position = { .x = gs.canvas_width * 0.5, .y  = ship.radius * 2 };
 	
 	size_t ticks{ 0 };
 
@@ -123,32 +123,32 @@ int main()
 
 		// wrap the ship when crossing the canvas border
 		while (ship.position.x < ship.radius)
-			ship.position.x += ship.radius - (ship.radius - gs.canvas_width);
+			ship.position.x += (gs.canvas_width - ship.radius) - ship.radius;
 
 		while (ship.position.x >= gs.canvas_width - ship.radius)
-			ship.position.x -= ship.radius - (ship.radius - gs.canvas_width);
+			ship.position.x -= (gs.canvas_width - ship.radius) - ship.radius;
 
 		while (ship.position.y < ship.radius)
-			ship.position.y += ship.radius - (ship.radius - gs.canvas_width);
+			ship.position.y += (gs.canvas_height - ship.radius) - ship.radius;
 
 		while (ship.position.y >= gs.canvas_height - ship.radius)
-			ship.position.y -= ship.radius - (ship.radius - gs.canvas_width);
+			ship.position.y -= (gs.canvas_height - ship.radius) - ship.radius;
 
 		asteroid.position.x += asteroid.velocity.x;
 		asteroid.position.y += asteroid.velocity.y;
 
 		// wrap the ship when crossing the canvas border
 		while (asteroid.position.x < asteroid.radius)
-			asteroid.position.x += asteroid.radius - (asteroid.radius - gs.canvas_width);
+			asteroid.position.x += (gs.canvas_width - asteroid.radius) - asteroid.radius;
 
 		while (asteroid.position.x >= gs.canvas_width - asteroid.radius)
-			asteroid.position.x -= asteroid.radius - (asteroid.radius - gs.canvas_width);
+			asteroid.position.x -= (gs.canvas_width - asteroid.radius) - asteroid.radius;
 
 		while (asteroid.position.y < asteroid.radius)
-			asteroid.position.y += asteroid.radius - (asteroid.radius - gs.canvas_width);
+			asteroid.position.y += (gs.canvas_height - asteroid.radius) - asteroid.radius;
 
 		while (asteroid.position.y >= gs.canvas_height - asteroid.radius)
-			asteroid.position.y -= asteroid.radius - (asteroid.radius - gs.canvas_width);
+			asteroid.position.y -= (gs.canvas_height - asteroid.radius) - asteroid.radius;
 
 		if (((ship.position.x - asteroid.position.x) * (ship.position.x - asteroid.position.x)) + ((ship.position.y - asteroid.position.y) * (ship.position.y - asteroid.position.y)) <= ((ship.radius + asteroid.radius) * (ship.radius + asteroid.radius)))
 		{
@@ -161,12 +161,14 @@ int main()
 		ticks++;
 
 		// Only display output
-		if (ticks % 20 == 0)
+		if (ticks % 15 == 0)
 		{
 			double deg = ship.angle * 180 / std::numbers::pi;
 			if (SYSTEM_CLS) system("cls");
-			std::cout << "x: " << ship.position.x << ", y: " << ship.position.y << ", vx: "
-				<< ship.velocity.x << ", vy: " << ship.velocity.y << ", angle: " << deg << "\n\n";
+			std::cout << "sx: " << ship.position.x << ", sy: " << ship.position.y << ", svx: "
+				<< ship.velocity.x << ", svy: " << ship.velocity.y << ", angle: " << deg << "\n\n";
+			std::cout << "ax: " << asteroid.position.x << ", ay: " << asteroid.position.y << ", avx: "
+				<< asteroid.velocity.x << ", avy: " << asteroid.velocity.y << "\n\n";
 		}
 	}
 

@@ -60,11 +60,11 @@ int main()
 	ShipState ship;
 
 	std::vector<AsteroidState> asteroids;
-	asteroids.push_back({ .id = 1, .position{40, 18}, .velocity{0.0, -0.4} });
-	asteroids.push_back({ .id = 2, .position{8, 14}, .velocity{0.12, 0.4} });
-	asteroids.push_back({ .id = 3, .position{14, 10}, .velocity{0.3, -0.25} });
-	asteroids.push_back({ .id = 4, .position{46, 16}, .velocity{-0.2, -0.4} });
-	asteroids.push_back({ .id = 5, .position{73, 8}, .velocity{-0.5, 0.8} });
+	asteroids.push_back({ .id = 1, .position{40, 18}, .velocity{0.0, -4} });
+	asteroids.push_back({ .id = 2, .position{8, 14}, .velocity{12, 4} });
+	asteroids.push_back({ .id = 3, .position{14, 10}, .velocity{3, -25} });
+	asteroids.push_back({ .id = 4, .position{46, 16}, .velocity{-2, -4} });
+	asteroids.push_back({ .id = 5, .position{73, 8}, .velocity{-5, 8} });
 
 	ship.position = { .x = gs.canvas_width * 0.5, .y = ship.radius * 2 };
 
@@ -168,7 +168,8 @@ int main()
 				std::cout << "HIT!";
 				//stop the game loop and wait for eof or nl to continue, prevents the console from closing 
 				//immediately on hit (because otherwise a held key will edit the file when the console closes.)
-				std::cin.get(); 
+				std::cin.get();
+				return 1;
 
 			}
 		}

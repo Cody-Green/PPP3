@@ -15,7 +15,6 @@
 
 const bool SYSTEM_CLS = false; // for continuous screen clearing
 const double TWO_PI = 2.0 * std::numbers::pi;
-std::chrono::steady_clock::time_point prev = std::chrono::steady_clock::now();
 
 struct Vector2
 {
@@ -68,7 +67,8 @@ int main()
 
 	ship.position = { .x = gs.canvas_width * 0.5, .y = ship.radius * 2 };
 
-	size_t ticks{ 0 };
+	std::chrono::steady_clock::time_point output_start = std::chrono::steady_clock::now();
+	std::chrono::steady_clock::time_point prev = std::chrono::steady_clock::now();
 
 	while (!gs.is_quit)
 	{
@@ -91,9 +91,9 @@ int main()
 			}
 			case 'w':
 			{
-				double damping = std::exp(- ship.intertial_drag * gs.delta_v);
-				ship.velocity.x += (std::cos(ship.angle) * ship.t_acceleration) * gs.delta_v * damping;
-				ship.velocity.y += (std::sin(ship.angle) * ship.t_acceleration) * gs.delta_v * damping;
+				
+				ship.velocity.x += (std::cos(ship.angle) * ship.t_acceleration) * gs.delta_v;
+				ship.velocity.y += (std::sin(ship.angle) * ship.t_acceleration) * gs.delta_v;
 				break;
 			}
 			case 'a':
@@ -110,6 +110,9 @@ int main()
 				break;
 			}
 		}
+		double damping = std::exp(-ship.intertial_drag * gs.delta_v);
+		ship.velocity.x *= damping;
+		ship.velocity.y *= damping;
 
 		while (ship.angle < 0)
 			ship.angle += TWO_PI;
@@ -174,11 +177,15 @@ int main()
 			}
 		}
 
-		std::this_thread::sleep_for(std::chrono::milliseconds(16));
-		ticks++;
+		//std::this_thread::sleep_for(std::chrono::milliseconds(16));
+		//ticks++;
 
+		std::chrono::steady_clock::time_point output_end = std::chrono::steady_clock::now();
+		std::chrono::duration<double> output_elapsed = output_end - output_start;
+		
 		// Only display output
-		if (ticks % 15 == 0)
+		//std::cout << "seconds: " << output_elapsed << "\n\n";
+		if (output_elapsed.count()  > 0.24)
 		{
 			double deg = ship.angle * 180 / std::numbers::pi;
 			if (SYSTEM_CLS) system("cls");
@@ -189,6 +196,7 @@ int main()
 				std::cout << "asteroid " << asteroid.id << " x: " 
 					<< asteroid.position.x << ", y: " << asteroid.position.y << "\n\n";
 			}
+			output_start = std::chrono::steady_clock::now();
 		}
 	}
 

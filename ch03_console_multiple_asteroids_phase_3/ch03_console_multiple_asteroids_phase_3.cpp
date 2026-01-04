@@ -28,7 +28,7 @@ struct ShipState
 	Vector2      position{ 0 };
 	Vector2      velocity{ 0 };
 	double         radius{ 0.5 };
-	double t_acceleration{ 0.12 }; // thrust
+	double t_acceleration{ 2.0 }; // thrust
 	double          speed{ 0 };
 	double          angle{ std::numbers::pi * 0.5 }; // Up 
 	double      turn_rate{ 0.06 }; // ~3.4 degrees

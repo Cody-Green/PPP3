@@ -11,9 +11,11 @@
 #include <chrono>
 #include <conio.h>
 #include <numbers>
+#include <vector>
 
 const bool SYSTEM_CLS = false; // for continuous screen clearing
 const double TWO_PI = 2.0 * std::numbers::pi;
+std::chrono::steady_clock::time_point prev = std::chrono::steady_clock::now();
 
 struct Vector2
 {
@@ -31,7 +33,7 @@ struct ShipState
 	double          angle{ std::numbers::pi * 0.5 }; // Up 
 	double      turn_rate{ 0.06 }; // ~3.4 degrees
 	double      max_speed{ 12 };
-	double intertial_drag{ 0.001 };
+	double intertial_drag{ 2.0 };
 };
 
 struct AsteroidState
@@ -47,7 +49,7 @@ struct GameState
 {
 	double  canvas_width{ 80 };
 	double canvas_height{ 20 };
-	double       delta_v{ 1 };
+	double       delta_v{ 0 };
 	int   asteroid_count{ 0 };
 	bool         is_quit{ false };
 };
@@ -58,7 +60,7 @@ int main()
 	ShipState ship;
 
 	std::vector<AsteroidState> asteroids;
-	asteroids.push_back({ .id = 1, .position{5, 18}, .velocity{0.2, -0.4} });
+	asteroids.push_back({ .id = 1, .position{40, 18}, .velocity{0.0, -0.4} });
 	asteroids.push_back({ .id = 2, .position{8, 14}, .velocity{0.12, 0.4} });
 	asteroids.push_back({ .id = 3, .position{14, 10}, .velocity{0.3, -0.25} });
 	asteroids.push_back({ .id = 4, .position{46, 16}, .velocity{-0.2, -0.4} });
@@ -70,6 +72,11 @@ int main()
 
 	while (!gs.is_quit)
 	{
+
+		std::chrono::steady_clock::time_point now = std::chrono::steady_clock::now();
+		std::chrono::duration<double> elapsed = now - prev;
+		prev = now;
+		gs.delta_v = elapsed.count();
 		if (_kbhit())
 		{
 			char input_key{ 0 };
@@ -84,8 +91,9 @@ int main()
 			}
 			case 'w':
 			{
-				ship.velocity.x += (std::cos(ship.angle) * ship.t_acceleration);
-				ship.velocity.y += (std::sin(ship.angle) * ship.t_acceleration);
+				double damping = std::exp(- ship.intertial_drag * gs.delta_v);
+				ship.velocity.x += (std::cos(ship.angle) * ship.t_acceleration) * gs.delta_v * damping;
+				ship.velocity.y += (std::sin(ship.angle) * ship.t_acceleration) * gs.delta_v * damping;
 				break;
 			}
 			case 'a':
@@ -103,10 +111,6 @@ int main()
 			}
 		}
 
-		double drag = (1.0 - ship.intertial_drag);
-		ship.velocity.x *= drag;
-		ship.velocity.y *= drag;
-
 		while (ship.angle < 0)
 			ship.angle += TWO_PI;
 
@@ -121,8 +125,8 @@ int main()
 			ship.velocity.y *= scale;
 		}
 
-		ship.position.x += ship.velocity.x;
-		ship.position.y += ship.velocity.y;
+		ship.position.x += ship.velocity.x * gs.delta_v;
+		ship.position.y += ship.velocity.y * gs.delta_v;
 
 		// wrap the ship when crossing the canvas border
 		while (ship.position.x < ship.radius)
@@ -139,8 +143,8 @@ int main()
 
 		for(AsteroidState& asteroid : asteroids)
 		{
-			asteroid.position.x += asteroid.velocity.x;
-			asteroid.position.y += asteroid.velocity.y;
+			asteroid.position.x += asteroid.velocity.x * gs.delta_v;
+			asteroid.position.y += asteroid.velocity.y * gs.delta_v;
 
 			// wrap the asteroid when crossing the canvas border
 			while (asteroid.position.x < asteroid.radius)
@@ -162,7 +166,10 @@ int main()
 			if ((difference_x * difference_x) + (difference_y * difference_y) <= (radius_sum * radius_sum))
 			{
 				std::cout << "HIT!";
-				return 1;
+				//stop the game loop and wait for eof or nl to continue, prevents the console from closing 
+				//immediately on hit (because otherwise a held key will edit the file when the console closes.)
+				std::cin.get(); 
+
 			}
 		}
 
@@ -176,7 +183,7 @@ int main()
 			if (SYSTEM_CLS) system("cls");
 			std::cout << "sx: " << ship.position.x << ", sy: " << ship.position.y << ", svx: "
 				<< ship.velocity.x << ", svy: " << ship.velocity.y << ", angle: " << deg << "\n\n";
-			for (AsteroidState asteroid : asteroids)
+			for (const AsteroidState& asteroid : asteroids)
 			{
 				std::cout << "asteroid " << asteroid.id << " x: " 
 					<< asteroid.position.x << ", y: " << asteroid.position.y << "\n\n";

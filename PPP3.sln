@@ -29,6 +29,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ch03_game_loop_console_ship
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ch03_game_loop_console_asteroids_phase_2", "ch03_game_loop_console_asteroids_phase_2\ch03_game_loop_console_asteroids_phase_2.vcxproj", "{3637DD96-F4A0-4D48-B05E-DE7C76FBFD8B}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ch03_console_multiple_asteroids_phase_3", "ch03_console_multiple_asteroids_phase_3\ch03_console_multiple_asteroids_phase_3.vcxproj", "{BD156723-0F56-4AFB-ABAB-06F803BBE70D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -141,6 +143,14 @@ Global
 		{3637DD96-F4A0-4D48-B05E-DE7C76FBFD8B}.Release|x64.Build.0 = Release|x64
 		{3637DD96-F4A0-4D48-B05E-DE7C76FBFD8B}.Release|x86.ActiveCfg = Release|Win32
 		{3637DD96-F4A0-4D48-B05E-DE7C76FBFD8B}.Release|x86.Build.0 = Release|Win32
+		{BD156723-0F56-4AFB-ABAB-06F803BBE70D}.Debug|x64.ActiveCfg = Debug|x64
+		{BD156723-0F56-4AFB-ABAB-06F803BBE70D}.Debug|x64.Build.0 = Debug|x64
+		{BD156723-0F56-4AFB-ABAB-06F803BBE70D}.Debug|x86.ActiveCfg = Debug|Win32
+		{BD156723-0F56-4AFB-ABAB-06F803BBE70D}.Debug|x86.Build.0 = Debug|Win32
+		{BD156723-0F56-4AFB-ABAB-06F803BBE70D}.Release|x64.ActiveCfg = Release|x64
+		{BD156723-0F56-4AFB-ABAB-06F803BBE70D}.Release|x64.Build.0 = Release|x64
+		{BD156723-0F56-4AFB-ABAB-06F803BBE70D}.Release|x86.ActiveCfg = Release|Win32
+		{BD156723-0F56-4AFB-ABAB-06F803BBE70D}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

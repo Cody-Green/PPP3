@@ -1,4 +1,4 @@
-//PPP3/ch03_game_loop_console_asteroids_phase_2/ch03_game_loop_console_asteroids_phase_2.cpp
+//PPP3/ch03_console_multiple_asteroids_phase_3/ch03_console_multiple_asteroids_phase_3.cpp
 
 // - Ship and asteroid wraps around canvas borders radius <= x < canvas_width - radius
 //                                                 radius <= y < canvas_height - radius
@@ -54,47 +54,44 @@ int main()
 {
 	GameState gs;
 	ShipState ship;
-	AsteroidState asteroid;
+	std::vector<AsteroidState> asteroids;
+	asteroids.push_back({ .position{5, 5}, .velocity{2, -4} });
+	asteroids.push_back({ .position{73, 10}, .velocity{-2, 3} });
+	asteroids.push_back({ .position{12, 18}, .velocity{5, -8} });
+	asteroids.push_back({ .position{26, 7}, .velocity{-8, 17} });
+	asteroids.push_back({ .position{58, 13}, .velocity{2, -4} });
 
-	asteroid.position = { gs.canvas_width * 0.5, gs.canvas_height - asteroid.radius * 2};
-	asteroid.velocity.y = -0.2;
-	ship.position = { .x = gs.canvas_width * 0.5, .y  = ship.radius * 2 };
-	
+	ship.position = { .x = gs.canvas_width * 0.5, .y = ship.radius * 2 };
+
 	size_t ticks{ 0 };
 
 	while (!gs.is_quit)
 	{
-		if (_kbhit())
+		switch (_kbhit())
 		{
-			char input_key{ 0 };
-			input_key = _getch();
-
-			switch (input_key)
-			{
-			case 'q':
-			{
-				gs.is_quit = true;
-				break;
-			}
-			case 'w':
-			{
-				ship.velocity.x += (std::cos(ship.angle) * ship.t_acceleration);
-				ship.velocity.y += (std::sin(ship.angle) * ship.t_acceleration);
-				break;
-			}
-			case 'a':
-			{
-				ship.angle += ship.turn_rate;
-				break;
-			}
-			case 'd':
-			{
-				ship.angle -= ship.turn_rate;
-				break;
-			}
-			default:
-				break;
-			}
+		case 'q':
+		{
+			gs.is_quit = true;
+			break;
+		}
+		case 'w':
+		{
+			ship.velocity.x += (std::cos(ship.angle) * ship.t_acceleration);
+			ship.velocity.y += (std::sin(ship.angle) * ship.t_acceleration);
+			break;
+		}
+		case 'a':
+		{
+			ship.angle += ship.turn_rate;
+			break;
+		}
+		case 'd':
+		{
+			ship.angle -= ship.turn_rate;
+			break;
+		}
+		default:
+			break;
 		}
 
 		double drag = (1.0 - ship.intertial_drag);
@@ -131,30 +128,33 @@ int main()
 		while (ship.position.y >= gs.canvas_height - ship.radius)
 			ship.position.y -= gs.canvas_height - 2 * ship.radius;
 
-		asteroid.position.x += asteroid.velocity.x;
-		asteroid.position.y += asteroid.velocity.y;
-
-		// wrap the asteroid when crossing the canvas border
-		while (asteroid.position.x < asteroid.radius)
-			asteroid.position.x += gs.canvas_width - 2 * asteroid.radius;
-
-		while (asteroid.position.x >= gs.canvas_width - asteroid.radius)
-			asteroid.position.x -= gs.canvas_width - 2 * asteroid.radius;
-
-		while (asteroid.position.y < asteroid.radius)
-			asteroid.position.y += gs.canvas_height - 2 * asteroid.radius;
-
-		while (asteroid.position.y >= gs.canvas_height - asteroid.radius)
-			asteroid.position.y -= gs.canvas_height - 2 * asteroid.radius;
-
-		double difference_x = ship.position.x - asteroid.position.x;
-		double difference_y = ship.position.y - asteroid.position.y;
-		double radius_sum = ship.radius + asteroid.radius;
-		//check distance between ship and asteroid
-		if ((difference_x * difference_x) + (difference_y * difference_y) <= (radius_sum * radius_sum))
+		for(AsteroidState asteroid : asteroids)
 		{
-			std::cout << "HIT!";
-			return 1;
+			asteroid.position.x += asteroid.velocity.x;
+			asteroid.position.y += asteroid.velocity.y;
+		
+			// wrap the asteroid when crossing the canvas border
+			while (asteroid.position.x < asteroid.radius)
+				asteroid.position.x += gs.canvas_width - 2 * asteroid.radius;
+
+			while (asteroid.position.x >= gs.canvas_width - asteroid.radius)
+				asteroid.position.x -= gs.canvas_width - 2 * asteroid.radius;
+
+			while (asteroid.position.y < asteroid.radius)
+				asteroid.position.y += gs.canvas_height - 2 * asteroid.radius;
+
+			while (asteroid.position.y >= gs.canvas_height - asteroid.radius)
+				asteroid.position.y -= gs.canvas_height - 2 * asteroid.radius;
+		
+			double difference_x = ship.position.x - asteroid.position.x;
+			double difference_y = ship.position.y - asteroid.position.y;
+			double radius_sum = ship.radius + asteroid.radius;
+			//check distance between ship and asteroid
+			if ((difference_x * difference_x) + (difference_y * difference_y) <= (radius_sum * radius_sum))
+			{
+				std::cout << "HIT!";
+				return 1;
+			}
 		}
 
 		std::this_thread::sleep_for(std::chrono::milliseconds(16));
@@ -167,8 +167,6 @@ int main()
 			if (SYSTEM_CLS) system("cls");
 			std::cout << "sx: " << ship.position.x << ", sy: " << ship.position.y << ", svx: "
 				<< ship.velocity.x << ", svy: " << ship.velocity.y << ", angle: " << deg << "\n\n";
-			std::cout << "ax: " << asteroid.position.x << ", ay: " << asteroid.position.y << ", avx: "
-				<< asteroid.velocity.x << ", avy: " << asteroid.velocity.y << "\n\n";
 		}
 	}
 

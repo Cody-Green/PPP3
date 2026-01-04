@@ -1,7 +1,7 @@
 //PPP3/ch03_game_loop_console_asteroids_phase_2/ch03_game_loop_console_asteroids_phase_2.cpp
 
-// - Ship wraps around canvas borders 0 <= x < canvas_width
-//                                 0 <= y < canvas_height
+// - Ship wraps around canvas borders 0 <= x < canvas_width - 2 * radius
+//                                 0 <= y < canvas_height - 2 * radius
 // - Ship angle is normalized to 2.0 * pi
 // - Ship speed is clamped to max_speed => speed <= max_speed
 
@@ -53,8 +53,6 @@ struct GameState
 
 int main()
 {
-
-
 	GameState gs;
 	ShipState ship;
 	AsteroidState asteroid;
@@ -123,39 +121,42 @@ int main()
 
 		// wrap the ship when crossing the canvas border
 		while (ship.position.x < ship.radius)
-			ship.position.x += (gs.canvas_width - ship.radius) - ship.radius;
+			ship.position.x += gs.canvas_width - 2 * ship.radius;
 
 		while (ship.position.x >= gs.canvas_width - ship.radius)
-			ship.position.x -= (gs.canvas_width - ship.radius) - ship.radius;
+			ship.position.x -= gs.canvas_width - 2 * ship.radius;
 
 		while (ship.position.y < ship.radius)
-			ship.position.y += (gs.canvas_height - ship.radius) - ship.radius;
+			ship.position.y += gs.canvas_width - 2 * ship.radius;
 
 		while (ship.position.y >= gs.canvas_height - ship.radius)
-			ship.position.y -= (gs.canvas_height - ship.radius) - ship.radius;
+			ship.position.y -= gs.canvas_width - 2 * ship.radius;
 
 		asteroid.position.x += asteroid.velocity.x;
 		asteroid.position.y += asteroid.velocity.y;
 
-		// wrap the ship when crossing the canvas border
+		// wrap the asteroid when crossing the canvas border
 		while (asteroid.position.x < asteroid.radius)
-			asteroid.position.x += (gs.canvas_width - asteroid.radius) - asteroid.radius;
+			asteroid.position.x += gs.canvas_width - 2 * asteroid.radius;
 
 		while (asteroid.position.x >= gs.canvas_width - asteroid.radius)
-			asteroid.position.x -= (gs.canvas_width - asteroid.radius) - asteroid.radius;
+			asteroid.position.x -= gs.canvas_width - 2 * asteroid.radius;
 
 		while (asteroid.position.y < asteroid.radius)
-			asteroid.position.y += (gs.canvas_height - asteroid.radius) - asteroid.radius;
+			asteroid.position.y += gs.canvas_width - 2 * asteroid.radius;
 
 		while (asteroid.position.y >= gs.canvas_height - asteroid.radius)
-			asteroid.position.y -= (gs.canvas_height - asteroid.radius) - asteroid.radius;
+			asteroid.position.y -= gs.canvas_width - 2 * asteroid.radius;
 
-		if (((ship.position.x - asteroid.position.x) * (ship.position.x - asteroid.position.x)) + ((ship.position.y - asteroid.position.y) * (ship.position.y - asteroid.position.y)) <= ((ship.radius + asteroid.radius) * (ship.radius + asteroid.radius)))
+		double difference_x = ship.position.x - asteroid.position.x;
+		double difference_y = ship.position.y - asteroid.position.y;
+		double radius_sum = ship.radius + asteroid.radius;
+		//check distance between ship and asteroid
+		if ((difference_x * difference_x) + (difference_y * difference_y) <= (radius_sum * radius_sum))
 		{
 			std::cout << "HIT!";
 			return 1;
 		}
-
 
 		std::this_thread::sleep_for(std::chrono::milliseconds(16));
 		ticks++;

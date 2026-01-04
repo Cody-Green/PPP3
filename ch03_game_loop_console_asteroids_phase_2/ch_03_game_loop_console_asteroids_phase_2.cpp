@@ -1,7 +1,7 @@
 //PPP3/ch03_game_loop_console_asteroids_phase_2/ch03_game_loop_console_asteroids_phase_2.cpp
 
-// - Ship wraps around canvas borders 0 <= x < canvas_width - 2 * radius
-//                                 0 <= y < canvas_height - 2 * radius
+// - Ship and asteroid wraps around canvas borders radius <= x < canvas_width - 2 * radius
+//                                                 radius <= y < canvas_height - 2 * radius
 // - Ship angle is normalized to 2.0 * pi
 // - Ship speed is clamped to max_speed => speed <= max_speed
 
@@ -38,7 +38,6 @@ struct AsteroidState
 {
 	Vector2        position{ 0 };
 	Vector2        velocity{ 0 };
-	Vector2 initial_impulse{ 0 };
 	double           radius{ 0.5 };
 
 };
@@ -127,10 +126,10 @@ int main()
 			ship.position.x -= gs.canvas_width - 2 * ship.radius;
 
 		while (ship.position.y < ship.radius)
-			ship.position.y += gs.canvas_width - 2 * ship.radius;
+			ship.position.y += gs.canvas_height - 2 * ship.radius;
 
 		while (ship.position.y >= gs.canvas_height - ship.radius)
-			ship.position.y -= gs.canvas_width - 2 * ship.radius;
+			ship.position.y -= gs.canvas_height - 2 * ship.radius;
 
 		asteroid.position.x += asteroid.velocity.x;
 		asteroid.position.y += asteroid.velocity.y;
@@ -143,10 +142,10 @@ int main()
 			asteroid.position.x -= gs.canvas_width - 2 * asteroid.radius;
 
 		while (asteroid.position.y < asteroid.radius)
-			asteroid.position.y += gs.canvas_width - 2 * asteroid.radius;
+			asteroid.position.y += gs.canvas_height - 2 * asteroid.radius;
 
 		while (asteroid.position.y >= gs.canvas_height - asteroid.radius)
-			asteroid.position.y -= gs.canvas_width - 2 * asteroid.radius;
+			asteroid.position.y -= gs.canvas_height - 2 * asteroid.radius;
 
 		double difference_x = ship.position.x - asteroid.position.x;
 		double difference_y = ship.position.y - asteroid.position.y;

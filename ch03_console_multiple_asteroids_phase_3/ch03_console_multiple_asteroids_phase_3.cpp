@@ -14,6 +14,7 @@
 #include <vector>
 
 const bool SYSTEM_CLS = false; // for continuous screen clearing
+const bool DEBUG = true;
 const double TWO_PI = 2.0 * std::numbers::pi;
 
 struct Vector2
@@ -48,7 +49,7 @@ struct GameState
 {
 	double  canvas_width{ 80 };
 	double canvas_height{ 20 };
-	double       delta_v{ 0 };
+	double       dt{ 0 };
 	int   asteroid_count{ 0 };
 	bool         is_quit{ false };
 };
@@ -76,7 +77,11 @@ int main()
 		std::chrono::steady_clock::time_point now = std::chrono::steady_clock::now();
 		std::chrono::duration<double> elapsed = now - prev;
 		prev = now;
-		gs.delta_v = elapsed.count();
+		double dt = elapsed.count();
+		if (dt > 0.1) dt = 0.1;
+		if (dt < 0.0) dt = 0.0;
+		gs.dt = dt;
+
 		if (_kbhit())
 		{
 			char input_key{ 0 };
@@ -92,8 +97,8 @@ int main()
 			case 'w':
 			{
 				
-				ship.velocity.x += (std::cos(ship.angle) * ship.t_acceleration) * gs.delta_v;
-				ship.velocity.y += (std::sin(ship.angle) * ship.t_acceleration) * gs.delta_v;
+				ship.velocity.x += (std::cos(ship.angle) * ship.t_acceleration) * gs.dt;
+				ship.velocity.y += (std::sin(ship.angle) * ship.t_acceleration) * gs.dt;
 				break;
 			}
 			case 'a':
@@ -110,7 +115,7 @@ int main()
 				break;
 			}
 		}
-		double damping = std::exp(-ship.intertial_drag * gs.delta_v);
+		double damping = std::exp(-ship.intertial_drag * gs.dt);
 		ship.velocity.x *= damping;
 		ship.velocity.y *= damping;
 
@@ -128,8 +133,8 @@ int main()
 			ship.velocity.y *= scale;
 		}
 
-		ship.position.x += ship.velocity.x * gs.delta_v;
-		ship.position.y += ship.velocity.y * gs.delta_v;
+		ship.position.x += ship.velocity.x * gs.dt;
+		ship.position.y += ship.velocity.y * gs.dt;
 
 		// wrap the ship when crossing the canvas border
 		while (ship.position.x < ship.radius)
@@ -146,8 +151,8 @@ int main()
 
 		for(AsteroidState& asteroid : asteroids)
 		{
-			asteroid.position.x += asteroid.velocity.x * gs.delta_v;
-			asteroid.position.y += asteroid.velocity.y * gs.delta_v;
+			asteroid.position.x += asteroid.velocity.x * gs.dt;
+			asteroid.position.y += asteroid.velocity.y * gs.dt;
 
 			// wrap the asteroid when crossing the canvas border
 			while (asteroid.position.x < asteroid.radius)
@@ -177,14 +182,12 @@ int main()
 			}
 		}
 
-		//std::this_thread::sleep_for(std::chrono::milliseconds(16));
-		//ticks++;
+		std::this_thread::sleep_for(std::chrono::milliseconds(16));
 
 		std::chrono::steady_clock::time_point output_end = std::chrono::steady_clock::now();
 		std::chrono::duration<double> output_elapsed = output_end - output_start;
 		
 		// Only display output
-		//std::cout << "seconds: " << output_elapsed << "\n\n";
 		if (output_elapsed.count()  > 0.24)
 		{
 			double deg = ship.angle * 180 / std::numbers::pi;
@@ -196,6 +199,7 @@ int main()
 				std::cout << "asteroid " << asteroid.id << " x: " 
 					<< asteroid.position.x << ", y: " << asteroid.position.y << "\n\n";
 			}
+			if(DEBUG) std::cout << "dt: " << gs.dt << "\n\n"; //sanity check for debug
 			output_start = std::chrono::steady_clock::now();
 		}
 	}
